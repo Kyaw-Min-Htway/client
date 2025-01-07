@@ -5,7 +5,7 @@ function Avatar({ userId, name, ImageURL, width, height }) {
   let avatarName = "";
 
   if (name) {
-    const splitName = name.split(" ");
+    const splitName = name?.split(" ");
     if (splitName.length > 1) {
       avatarName = splitName[0][0] + splitName[1][0];
     } else {
@@ -25,32 +25,30 @@ function Avatar({ userId, name, ImageURL, width, height }) {
     "bg-blue-200"
   ];
 
-  // Use userId for consistent color selection or fallback to random
-  const colorIndex = userId ? userId % bgColor.length : Math.floor(Math.random() * bgColor.length);
+ const randomNumber = Math.floor(Math.random() * 9)
 
   return (
-    <div
-      className={`text-slate-800 overflow-hidden rounded-full shadow border text-xl font-bold ${bgColor[colorIndex]}`}
-      style={{ width: `${width}px`, height: `${height}px` }}
-    >
-      {ImageURL ? (
+    <div className={`text-slate-800  rounded-full font-bold relative`} style={{width : width+"px", height : height+"px" }}>
+      {
+        
+           ImageURL ? (
         <img
           src={ImageURL}
           width={width}
           height={height}
-          alt={name || "Avatar"}
-          style={{ objectFit: "cover" }}
+          alt={name}
+          className='overflow-hidden rounded-full'
         />
-      ) : name ? (
-        <div
-          className="overflow-hidden rounded-full flex justify-center items-center"
-          style={{ width: `${width}px`, height: `${height}px` }}
-        >
-          {avatarName}
+      ) : (
+          name ? (
+            <div  style={{width : width+"px", height : height+"px" }} className={`overflow-hidden rounded-full flex justify-center items-center text-lg ${bgColor[randomNumber]}`}>
+                {avatarName}
         </div>
       ) : (
         <TbUserCircle size={width} />
-      )}
+      )
+    )
+}
     </div>
   );
 }
