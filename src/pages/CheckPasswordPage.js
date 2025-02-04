@@ -36,9 +36,14 @@ const CheckPasswordPage = () => {
     const URL = `${process.env.REACT_APP_BACKEND_URL}/api/password`
 
     try{
-      const response = await axios.post(URL,{
-        userId : location?.state?._id,
-        password : data.password
+      const response = await axios({
+        method : "post",
+        url : URL,
+        data : {
+          userId : location?.state?._id,
+          password : data.password
+        },
+        withCredentials : true
       })
       toast.success(response.data.message)
   
