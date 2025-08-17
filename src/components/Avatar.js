@@ -30,7 +30,6 @@ function Avatar({ userId, name, ImageURL, width, height }) {
   return (
     <div className={`text-slate-800  rounded-full font-bold relative`} style={{width : width+"px", height : height+"px" }}>
       {
-        
            ImageURL ? (
         <img
           src={ImageURL}
