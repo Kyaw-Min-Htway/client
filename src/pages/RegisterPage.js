@@ -10,7 +10,7 @@ const RegisterPage = () => {
     name: "",
     email: "",
     password: "",
-    profile_pci: ""
+    profile_pic : "",
   })
   const [uploadPhoto,setUploadPhoto] = useState("")
   const navigate = useNavigate()

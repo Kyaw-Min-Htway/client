@@ -10,6 +10,9 @@ import { Forgotpassword } from "../pages/Forgotpassword";
 
 const router = createBrowserRouter([
     {
+        future: {
+            v7_startTransition: true,
+        },
         path: "/",
         element: <App />,
         children: [
