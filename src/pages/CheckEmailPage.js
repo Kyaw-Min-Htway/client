@@ -66,7 +66,7 @@ const handleSubmit = async(e) => {
                   required
                 />
               </div>
-              <button className='bg-primary text-lg px-4 py-1 hover:bg-secondary rounded mt-4 font-bold text-white leading-relaxed tracking-wide' >Done</button>
+              <button className='bg-primary text-lg px-4 py-1 hover:bg-secondary rounded mt-4 font-bold text-white leading-relaxed tracking-wide' >Continue</button>
             </form>
              <p className='my-3 text-center'>New User ? <Link to={"/register"} className="hover:text-primary font-semibold">Register</Link></p>
           </div>
