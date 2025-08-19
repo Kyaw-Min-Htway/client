@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { logout, setUser } from '../redux/userSlice'
 import Sidebar from '../components/Sidebar'
 
@@ -9,6 +9,7 @@ const Home = () => {
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const fetchUserDetails = useCallback(async () => {
     try {
@@ -35,12 +36,13 @@ const Home = () => {
     fetchUserDetails()
   }, [fetchUserDetails])
 
+  const basePath = location.pathname === '/'
   return (
     <div className='grid lg:grid-cols-[320px,1fr] h-screen max-h-screen'>
-      <section className='bg-white'>
+      <section className={`bg-white ${!basePath && "hidden"}`}>
         <Sidebar /> 
       </section>
-      <section>
+      <section className={`${basePath && "hidden"}`}>
         <Outlet />
       </section>
     </div>
