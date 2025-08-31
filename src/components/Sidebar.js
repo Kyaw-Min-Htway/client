@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import EditUserDetails from "./EditUserDetails";
 import { FiArrowUpLeft } from "react-icons/fi";
 import { logout } from "../redux/userSlice";
+import SearchUser from "./SearchUser";
 
 const Sidebar = () => {
   const user = useSelector((state) => state?.user);
   const [editUserOpen, setEditUserOpen] = useState(false);
   const [allUser, setAllUser] = useState([]);
-  const [openSearchUser, setOpenSearchUser] = useState(false);
+  const [openSearchUser, setOpenSearchUser] = useState(true);
   const socketConnection = useSelector((state) => state?.user?.socketConnection);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -170,6 +171,13 @@ const Sidebar = () => {
       {editUserOpen && (
         <EditUserDetails onClose={() => setEditUserOpen(false)} user={user} />
       )}
+
+      {/* Search user modal */}
+      {
+        openSearchUser && (
+          <SearchUser onClose={() => setOpenSearchUser(false)}/>
+        )
+      }
     </div>
   );
 };
